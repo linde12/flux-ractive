@@ -1,0 +1,23 @@
+body {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	background: #434343;
+	text-align: center;
+}
+
+.user-wrap {
+	background: #3E68E4;
+}
+
+.user {
+	text-align: left;
+	width: 20%;
+	margin: 0 auto;
+	color: white;
+}
+
+.navbar {
+	color: white;
+}

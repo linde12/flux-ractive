@@ -1,0 +1,7 @@
+module.exports = {
+	// User
+	ADD_USER: "ADD_USER",
+	REMOVE_USER: "REMOVE_USER",
+	UPDATE_USER: "UPDATE_USER",
+	GET_USERS: "GET_USERS"
+};

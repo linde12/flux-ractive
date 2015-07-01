@@ -1,0 +1,17 @@
+<div class="user-wrap">
+		{{#each users}}
+		<div class="user">
+			<div class="container">
+				<img src="{{picture.thumbnail}}" />
+			</div>
+			<div class="username">
+				{{username}}
+			</div>
+			<br />
+			<button style="margin-left: 10px" on-click="removeUser">Remove</button><br />
+			<div style="clear:both"></div>
+		</div>
+		{{/each}}
+</div>
+<br />
+<button on-click="addUser">Add User</button>

@@ -9,15 +9,33 @@ body {
 
 .user-wrap {
 	background: #3E68E4;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	height: 100%;
+	width: 300px;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 .user {
 	text-align: left;
-	width: 20%;
-	margin: 0 auto;
+	width: 300px;
 	color: white;
+	margin-top: 10px;
 }
 
 .navbar {
 	color: white;
+}
+
+img {
+	border-radius: 100%;
+}
+
+.container {
+	float: left;
+}
+
+.username {
 }

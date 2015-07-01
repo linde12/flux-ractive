@@ -16,7 +16,6 @@ module.exports = Ractive.extend({
 			url: 'http://api.randomuser.me/',
 			dataType: 'json',
 			success: function(data){
-				console.log(data);
 				UserActions.addUser(data.results[0].user);
 			}
 		});

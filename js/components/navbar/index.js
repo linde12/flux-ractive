@@ -6,25 +6,29 @@ var UserStore = require('../../stores/UserStore');
 module.exports = Ractive.extend({
 	template: Template,
 	onconstruct: function () {
-		var self = this;
+		UserStore.addChangeListener(this, 'onChange');
 
-		this.onChange = this.onChange.bind(this);
-		UserStore.on("change", this.onChange);
+		this.on('toggle', function () {
+			if (this.get('stopped') === false) {
+				UserStore.removeChangeListener(this, 'onChange');
+			} else {
+				UserStore.addChangeListener(this, 'onChange');
+			}
 
-		this.on('turnOff', function () {
-			UserStore.off("change", this.onChange);
+			this.set('stopped', !this.get('stopped'));
 		});
 	},
 
 	onChange: function () {
-			this.set({
-				numUsers: UserStore.getUsers().length
-			});
+		this.set({
+			numUsers: UserStore.getUsers().length
+		});
 	},
 
 	data: function () {
 		return {
-			numUsers: UserStore.getUsers().length
+			numUsers: UserStore.getUsers().length,
+			stopped: false
 		};
 	}
 });

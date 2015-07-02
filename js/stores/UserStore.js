@@ -1,12 +1,12 @@
-var Fluxxor = require('fluxxor');
 var Flux = require('../Flux');
 var Const = require('../constants');
+var assign = require('object-assign');
 
 var local = {
 	addUser: function (data) {
 		data.id = ++this.userId;
 		this.users.push(data);
-		this.emit("change");
+		this.emitChange();
 	},
 
 	removeUser: function (id) {
@@ -15,16 +15,15 @@ var local = {
 		})[0];
 
 		this.users.splice(this.users.indexOf(user), 1);
-		this.emit("change");
+		this.emitChange();
 	},
 
 	updateUser: function () {
-
-		this.emit("change");
+		this.emitChange();
 	}
 };
 
-var UserStore = Fluxxor.createStore({
+var UserStore = Flux.createStore({
 	initialize: function () {
 		this.userId = 0;
 		this.users = [];

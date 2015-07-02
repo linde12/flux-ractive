@@ -7,12 +7,21 @@ module.exports = Ractive.extend({
 	template: Template,
 	onconstruct: function () {
 		var self = this;
-		UserStore.on("change", function () {
-			self.set({
-				numUsers: UserStore.getUsers().length
-			});
+
+		this.onChange = this.onChange.bind(this);
+		UserStore.on("change", this.onChange);
+
+		this.on('turnOff', function () {
+			UserStore.off("change", this.onChange);
 		});
 	},
+
+	onChange: function () {
+			this.set({
+				numUsers: UserStore.getUsers().length
+			});
+	},
+
 	data: function () {
 		return {
 			numUsers: UserStore.getUsers().length
